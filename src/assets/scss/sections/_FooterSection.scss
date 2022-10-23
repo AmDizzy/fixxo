@@ -1,0 +1,25 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly ;
+    align-items: center;
+    height: 6.875rem;
+    width: 100%;
+    background-color: $color-gray-5;
+    margin-top: 4rem;
+    border-top: 1px solid $color-gray-47;
+
+    .social-media {
+        font-size: 1.25rem;
+
+        a {
+            margin: 0 0.2rem;
+            padding-right: 0.3rem;
+            padding-left: 0.3rem;
+        }
+    }
+
+    .copyright-information {
+        color: #616365;
+    }
+}

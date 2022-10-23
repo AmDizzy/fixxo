@@ -1,0 +1,136 @@
+.header {
+    background: rgb(231,231,231);
+    background: $color-gradient-gray-10;
+    
+}
+
+.mainmenu {
+    overflow: hidden;
+    padding-top: 2rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "logotype menuicons"
+                         "menulinks menulinks";
+
+    @include lg {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "logotype menulinks menuicons";
+    }
+    
+
+    .logotype {
+        grid-area: logotype;
+        flex: 1;
+        justify-content: flex-start;
+        font-weight: $font-weight-bold;
+        font-size: 2.2rem;
+
+        &:hover {
+            color: $color-dark;
+        }
+    }
+
+
+    .menu-links {
+        position: relative;
+        overflow: hidden;
+        grid-area: menulinks;
+        flex: 1;
+        display: none;
+        justify-content: flex-start;
+        margin-top: 1rem;
+        top: 0;
+
+        @include lg {
+            overflow: visible;
+            margin-top: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-link {
+            margin: 0.5rem 1rem;
+            text-align: center;
+            font-weight: $font-weight-medium;
+        }
+
+        .active {
+            color: $color-theme;
+        }
+    }
+
+    .menu-icons {
+        grid-area: menuicons;
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+
+        .menu-icon {
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            margin-left: 1.25rem;
+            height: 2.25rem;
+            width: 2.25rem;
+            background-color: $color-white;
+            color: $color-dark;
+            border-radius: $border-radius-rounded;
+            box-shadow: 0 0 8px rgb(190, 190, 190);
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:hover {
+                background-color: $color-theme;
+                color: $color-dark;
+            }
+
+            .badge {
+                background-color: $color-theme;
+                position: absolute;
+                font-size: 0.69rem;
+                height: 1rem;
+                width: 1rem;
+                padding: 3px 0 0 0;
+                top: -0.3rem;
+                left: 1.4rem;
+                transition: background-color 0.3s ease-in-out;
+                border-radius: $border-radius-rounded;
+            }
+
+            &:hover .badge {
+                background-color: $color-dark;
+            }
+        }
+
+        .active {
+            background-color: $color-theme;
+            color: $color-dark;
+
+            > .badge {
+                background-color: $color-dark;
+            }
+        }
+
+        .btn-menu-icon {
+            color: $color-white;
+            background-color: $color-dark;
+            border: none;
+            outline: none;
+            box-shadow: 0 0 16px rgb(190, 190, 190);
+
+            @include lg {
+                display: none;
+            }
+        }
+    }
+}
+
+
+.header-transparent {
+    background: none;
+}

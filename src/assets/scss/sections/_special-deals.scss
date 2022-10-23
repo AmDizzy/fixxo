@@ -1,0 +1,89 @@
+.special-deals {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+
+    .special-deal-2 {
+        margin-top: 4rem;
+    }
+    
+    > div {
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+
+        .flash-sale {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: $color-gray-50;
+            width: 825px;
+            height: 669px;
+            margin: 0;
+            color: $color-white;
+            font-size: $font-size-45;
+            font-weight: $font-weight-bold;
+        }
+    
+        .row {
+            margin: 0;
+
+            .col {
+
+                &:hover {
+
+                    .card {
+        
+                        .card-top {
+                            background-color: $color-gray-40;
+        
+                            .card-menu {
+                                top: 0;
+                                
+                            }
+        
+                            .btn {
+                                top: calc(100% - 50px);
+                            }
+                        }
+        
+                        .card-body {
+        
+                            .card-price {
+        
+                                .card-old-price {
+                                    left: 0;
+                                }
+        
+                                .card-discount-price {
+                                    left: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .card {
+
+                    .card-body {
+                        align-items: flex-start;
+    
+                        .card-price {
+
+                            .card-old-price {
+                                top: 0.2rem;
+                            }
+    
+                            .card-discount-price {
+                                position: absolute;
+                                left: -1rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

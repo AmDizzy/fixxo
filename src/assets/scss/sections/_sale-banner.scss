@@ -1,0 +1,25 @@
+.sale-banner {
+    display: flex;
+    flex-direction: column;
+    max-width: 1110px;
+    margin-top: 4rem;
+    align-items: center;
+    justify-content: center;
+    height: 326px;
+    background-color: $color-gray-58;
+    color: $color-white;
+
+    h1 {
+        font-size: $font-size-45;
+        font-weight: $font-weight-bold;
+        margin-bottom: 1.5rem;
+    }
+
+    p {
+        font-size: $font-size-20;
+        font-weight: $font-weight-bold;
+        margin-bottom: 2rem;
+    }
+
+
+}

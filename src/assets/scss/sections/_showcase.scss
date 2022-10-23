@@ -1,0 +1,40 @@
+.showcase {
+    background: rgb(231,231,231);
+    background: $color-gradient-gray-10;
+    margin-bottom: 4rem;
+
+    .container {
+        padding-top: 1.5rem;
+
+        .showcase-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+
+            img {
+                flex: 1;
+                height: auto;
+                width: auto;
+            }
+
+            div {
+                display: flex;
+                flex: 4;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                h1 {
+                    font-weight: $font-weight-extrabold;
+                    font-size: $font-size-60;
+                }
+
+                p {
+                    padding: 1.5rem 0;
+                    font-size: $font-size-20;
+                }
+            }
+        }
+    }
+}

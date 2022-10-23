@@ -1,0 +1,39 @@
+.container {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include sm {
+        max-width: $breakpoint-sm-max-width;
+    }
+    @include md {
+        max-width: $breakpoint-md-max-width;
+    }
+    @include lg {
+        max-width: $breakpoint-lg-max-width;
+    }
+    @include xl {
+        max-width: $breakpoint-xl-max-width;
+    }
+    @include xxl {
+        max-width: $breakpoint-xxl-max-width;
+    }
+    @include xxxl {
+        max-width: $breakpoint-xxxl-max-width;
+    }
+}
+
+
+a {
+    color: $color-dark;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+        color: $color-theme;
+    }
+}
+
+.active-link {
+    color: $color-theme;
+}
