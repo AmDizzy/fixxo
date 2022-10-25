@@ -4,6 +4,7 @@ import MainMenuSection from '../sections/MainMenuSection'
 import ProductGridSection from '../sections/ProductGridSection'
 
 const HomeView = () => {
+  window.top.document.title = 'Fixxo.'
 
   const [products, setProducts] = useState ([
     { id: 1, name: "Modern Black Blouse", category: "Fashion", price: "35.00", rating: 5, img: "https://images.pexels.com/photos/14093415/pexels-photo-14093415.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"},
