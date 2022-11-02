@@ -5,6 +5,7 @@ import FooterSection from '../sections/FooterSection'
 import MainMenuSection from '../sections/MainMenuSection'
 
 const ProductDetailsView = () => {
+  window.top.document.title = 'Products | Fixxo.'
 
     const params = useParams()
 

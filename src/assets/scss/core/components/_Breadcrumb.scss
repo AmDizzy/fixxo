@@ -18,9 +18,14 @@
             list-style: none;
             padding-left: 0;
 
+            .currentPage {
+                color: $color-theme;
+            }
+
             li+li:before {
                 padding: 0 0.3rem 0 0.3rem;
                 content: ">";
+                color: $color-dark;
             }
             
             > li {

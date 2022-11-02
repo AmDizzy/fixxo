@@ -28,33 +28,52 @@
     align-items: center;
     margin-bottom: 6.75rem;
 
-    .form {
-        max-width: 1110px;
+    .container {
+        width: 1110px;
 
-        h1 {
+        h2 {
             font-weight: $font-weight-bold;
             font-size: 1.125rem;
             margin-bottom: 1.5rem;
         }
 
-        #contactUsForm {
+        form {
+            font-size: 0.8rem;
+
+            @include md {
+                font-size: 1rem;
+            }
 
             .grid {
                 display: grid;
                 grid-template-columns: repeat(2, minmax(100px, 550px));
                 grid-template-rows: repeat(2, auto);
                 margin-bottom: 4rem;
-                column-gap: 2rem;
+                column-gap: 1rem;
 
                 .contactUsName {
-                    grid-column: 1 / 2;
+                    grid-column: 1 / -1;
                 }
                 .contactUsEmail {
-                    grid-column: 2 / -1;
+                    grid-column: 1 / -1;
                 }
                 .contactUsComments {
                     grid-column: 1 / -1;
                     height: 140px;
+                }
+
+                @include md {
+                    column-gap: 2rem;
+                    .contactUsName {
+                        grid-column: 1 / 2;
+                    }
+                    .contactUsEmail {
+                        grid-column: 2 / -1;
+                    }
+                    .contactUsComments {
+                        grid-column: 1 / -1;
+                        height: 140px;
+                    }
                 }
 
                 > div {
@@ -63,14 +82,32 @@
                         display: none;
                     }
                     
-                    #contactUsName,
-                    #contactUsEmail,
-                    #contactUsComments {
+                    input,
+                    textarea {
                         padding: 1rem;
                         height: 50px;
                         width: 100%;
                         border: 2px solid #C6C6C6;
                         color: $color-dark;
+
+                        &:focus {
+                            outline: 0;
+                            border: 2px solid rgba(0, 0, 0, 0.5);
+                            box-shadow: 0 0 2px 0 black;
+                        }
+                    }
+
+                    .errorMessage {
+                        padding-top: 0.2rem;
+                        color: $color-theme;
+                    }
+
+                    .error {
+                        border: none;
+                        outline: 0;
+                        border: 2px solid rgba(255, 115, 115, 0.5);
+                        box-shadow: 0 0 2px 0 $color-theme;
+                        color: $color-theme;
 
                         &:focus {
                             outline: 0;
@@ -94,7 +131,11 @@
 
             button {
                 height: 50px;
-                width: 207px;
+                width: 100%;
+
+                @include lg {
+                    width: 207px;
+                }
             }
         }
     }

@@ -11,7 +11,7 @@ const Breadcrumb = ({location}) => {
                         <i className="fa-sharp fa-solid fa-house"></i>
                     </NavLink>
                 </li>
-                <li>{location}</li>
+                <li className='currentPage'>{location}</li>
             </ul>
         </div>
     </section>
