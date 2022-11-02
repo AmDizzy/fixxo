@@ -17,8 +17,7 @@ const ContactFormSection = () => {
             case 'text':
                 if(!e.target.value) {
                     error = "You must enter a name"
-                } else if
-                    (!regex_name.test(e.target.value)) {
+                } else if(!regex_name.test(e.target.value)) {
                     e.target.classList.add('error')
                     error = "Please enter a valid name"
                 } else {
@@ -29,8 +28,7 @@ const ContactFormSection = () => {
             case 'email':
                 if(!e.target.value) {
                     error = "You must enter an e-mail address"
-                } else if
-                    (!regex_email.test(e.target.value)) {
+                } else if(!regex_email.test(e.target.value)) {
                     e.target.classList.add('error')
                     error = "Your e-mail must be valid (eg. username@domain.com)"
 
@@ -65,7 +63,7 @@ const ContactFormSection = () => {
         if(!values.contactUsName) {
             errors.contactUsName = "You must enter a name"
         }
-        else if(!regex_name.test(values.contactUsEmail)) {
+        else if(!regex_name.test(values.contactUsName)) {
             errors.contactUsName = "Please enter a valid name"
         }
 
@@ -79,8 +77,8 @@ const ContactFormSection = () => {
         if(!values.contactUsComments) {
             errors.contactUsComments = "You must enter a comment"
         }
-        else if(values.contactUsEmail.length < 5) {
-            errors.contactUsEmail = "Your comment must be atleast 5 letters"
+        else if(values.contactUsComments.length < 5) {
+            errors.contactUsComments = "Your comment must be atleast 5 letters"
         }
 
         if(Object.keys(errors).length === 0)
