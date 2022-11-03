@@ -5,7 +5,6 @@ const ContactFormSection = () => {
     const [formErrors, setFormErrors] = useState({})
     const [submitted, setSubmitted] = useState(false)
     const regex_email= /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-    const regex_name= /^[^ 0-9]+\s[^ 0-9]+$/i
 
     const handleChange = (e) => {
         const {id, value} = e.target
@@ -16,10 +15,10 @@ const ContactFormSection = () => {
         switch(e.target.type) {
             case 'text':
                 if(!e.target.value) {
-                    error = "You must enter a name"
-                } else if(!regex_name.test(e.target.value)) {
+                    error = "A name is required"
+                } else if(e.target.value.length < 2) {
                     e.target.classList.add('error')
-                    error = "Please enter a valid name"
+                    error = "Must be a valid name"
                 } else {
                     e.target.classList.remove('error')
                 }
@@ -27,11 +26,10 @@ const ContactFormSection = () => {
 
             case 'email':
                 if(!e.target.value) {
-                    error = "You must enter an e-mail address"
+                    error = "An email address is required"
                 } else if(!regex_email.test(e.target.value)) {
                     e.target.classList.add('error')
-                    error = "Your e-mail must be valid (eg. username@domain.com)"
-
+                    error = "Must be a valid email address (eg. test@domain.com)"
                 } else {
                     e.target.classList.remove('error')
                 }
@@ -39,10 +37,10 @@ const ContactFormSection = () => {
 
             case 'textarea':
                 if(!e.target.value) {
-                    error = "You must enter a comment"
+                    error = "A comment is required"
                 } else if(e.target.value.length < 5) {
                     e.target.classList.add('error')
-                    error = "Your comment must be atleast 5 letters"
+                    error = "Your comment must be at least 5 characters long"
                 } else {
                     e.target.classList.remove('error')
                 }
@@ -61,24 +59,24 @@ const ContactFormSection = () => {
         const errors = {}        
 
         if(!values.contactUsName) {
-            errors.contactUsName = "You must enter a name"
+            errors.contactUsName = "A name is required"
         }
-        else if(!regex_name.test(values.contactUsName)) {
-            errors.contactUsName = "Please enter a valid name"
+        else if(values.contactUsName.length < 2) {
+            errors.contactUsName = "Must be a valid name"
         }
 
         if(!values.contactUsEmail) {
-            errors.contactUsEmail = "You must enter an e-mail address"
+            errors.contactUsEmail = "An email address is required"
         }
         else if(!regex_email.test(values.contactUsEmail)) {
-            errors.contactUsEmail = "Your e-mail must be valid (eg. username@domain.com)"
+            errors.contactUsEmail = "Must be a valid email address (eg. test@domain.com)"
         }
             
         if(!values.contactUsComments) {
-            errors.contactUsComments = "You must enter a comment"
+            errors.contactUsComments = "A comment is required"
         }
         else if(values.contactUsComments.length < 5) {
-            errors.contactUsComments = "Your comment must be atleast 5 letters"
+            errors.contactUsComments = "Your comment must be at least 5 characters long"
         }
 
         if(Object.keys(errors).length === 0)
@@ -106,7 +104,7 @@ const ContactFormSection = () => {
                         <form onSubmit={handleSubmit} noValidate>
                             <div className="grid">
                                 <div className="contactUsName">
-                                    <input id="contactUsName" className="" type="text" placeholder="Your Name eg. John Doe" value={contactForm.name} onChange={handleChange} />
+                                    <input id="contactUsName" className="" type="text" placeholder="Your Name" value={contactForm.name} onChange={handleChange} />
                                     <div id="errorMessage-text" className="errorMessage">{formErrors.contactUsName}</div>    
                                 </div>
                                 <div className="contactUsEmail">
