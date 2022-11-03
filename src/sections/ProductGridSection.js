@@ -1,16 +1,13 @@
 import React from 'react'
 import ProductCard from '../components/ProductCard'
 
-const ProductGridSection = ({title, products}) => {
-
-
-
+const ProductGridSection = ({title, items = []}) => {
   return (
     <section className="featured-products container">
         <h1>{title}</h1>
           <div className="row">
             {
-              products.map(product => <ProductCard key={product.id} product={product} />)
+              items.map(product => <ProductCard key={product.articleNumber} product={product} />)
             }
           </div>
       </section>

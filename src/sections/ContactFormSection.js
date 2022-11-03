@@ -1,91 +1,57 @@
 import React, { useState } from 'react'
+import { submitData, validate } from '../assets/js/contactform_validation'
 
-const ContactFormSection = () => {
-    const [contactForm, setContactForm] = useState({contactUsName: '', contactUsEmail: '', contactUsComments: ''})
-    const [formErrors, setFormErrors] = useState({})
+const ContactForm = () => {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [comments, setComments] = useState('')
+    const [errors, setErrors] = useState({})
     const [submitted, setSubmitted] = useState(false)
-    const regex_email= /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+    const [failedSubmit, setFailedSubmit] = useState(false)
 
     const handleChange = (e) => {
-        const {id, value} = e.target
-        setContactForm({...contactForm, [id]: value})
-
-        let error = ""
-
-        switch(e.target.type) {
-            case 'text':
-                if(!e.target.value) {
-                    error = "A name is required"
-                } else if(e.target.value.length < 2) {
-                    e.target.classList.add('error')
-                    error = "Must be a valid name"
-                } else {
-                    e.target.classList.remove('error')
-                }
-                break;
-
+        const {id, value} = e.target       
+        switch(id) {
+            case 'name':
+                setName(value)
+                break
             case 'email':
-                if(!e.target.value) {
-                    error = "An email address is required"
-                } else if(!regex_email.test(e.target.value)) {
-                    e.target.classList.add('error')
-                    error = "Must be a valid email address (eg. test@domain.com)"
-                } else {
-                    e.target.classList.remove('error')
-                }
-                break;
-
-            case 'textarea':
-                if(!e.target.value) {
-                    error = "A comment is required"
-                } else if(e.target.value.length < 5) {
-                    e.target.classList.add('error')
-                    error = "Your comment must be at least 5 characters long"
-                } else {
-                    e.target.classList.remove('error')
-                }
-                break;
+                setEmail(value)
+                break
+            case 'comments':
+                setComments(value)
+                break
         }
 
-        document.getElementById(`errorMessage-${e.target.type}`).innerText = error
+        setErrors({...errors, [id]:validate(e)})
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        setFormErrors(validate(contactForm))
-    }
+        setFailedSubmit(false)
+        setSubmitted(false)
+        setErrors(validate(e, {name, email, comments}))
 
-    const validate = (values) => {
-        const errors = {}        
-
-        if(!values.contactUsName) {
-            errors.contactUsName = "A name is required"
-        }
-        else if(values.contactUsName.length < 2) {
-            errors.contactUsName = "Must be a valid name"
-        }
-
-        if(!values.contactUsEmail) {
-            errors.contactUsEmail = "An email address is required"
-        }
-        else if(!regex_email.test(values.contactUsEmail)) {
-            errors.contactUsEmail = "Must be a valid email address (eg. test@domain.com)"
-        }
+        if (errors.name === null && errors.email === null && errors.comments == null) {
             
-        if(!values.contactUsComments) {
-            errors.contactUsComments = "A comment is required"
-        }
-        else if(values.contactUsComments.length < 5) {
-            errors.contactUsComments = "Your comment must be at least 5 characters long"
-        }
+            let json = JSON.stringify({ name, email, comments})
 
-        if(Object.keys(errors).length === 0)
-            setSubmitted(true)
-        else
+            setName('')
+            setEmail('')
+            setComments('')
+            setErrors({})
+
+            if(await submitData('https://win22-webapi.azurewebsites.net/api/contactform', 'POST', json, )) {
+                setSubmitted(true)
+                setFailedSubmit(false)
+            } else {
+                setSubmitted(false)
+                setFailedSubmit(true)
+            }
+
+        } else {
             setSubmitted(false)
-
-
-        return errors;
+        }
     }
 
 
@@ -93,41 +59,46 @@ const ContactFormSection = () => {
     <section className="contact-us">
         <div className="container">
             {
-                submitted ?
-                (<div className="d-flex justify-content-center align-items-center">
-                    <div>Thank you for your comment!</div>
-                </div>)
-                :
-                (
-                    <>
-                        <h2>Come in Contact with Us</h2>
-                        <form onSubmit={handleSubmit} noValidate>
-                            <div className="grid">
-                                <div className="contactUsName">
-                                    <input id="contactUsName" className="" type="text" placeholder="Your Name" value={contactForm.name} onChange={handleChange} />
-                                    <div id="errorMessage-text" className="errorMessage">{formErrors.contactUsName}</div>    
-                                </div>
-                                <div className="contactUsEmail">
-                                    <input id="contactUsEmail" className="" type="email" placeholder="Your Mail" value={contactForm.email} onChange={handleChange} />
-                                    <div id="errorMessage-email" className="errorMessage">{formErrors.contactUsEmail}</div>
-                                </div>
-                                <div className="contactUsComments">
-                                    <textarea id="contactUsComments" className="" form="contactUsForm" placeholder="Comments" value={contactForm.comment} onChange={handleChange}></textarea>
-                                    <div id="errorMessage-textarea" className="errorMessage">{formErrors.contactUsComments}</div>
-                                </div>
-                            </div>
-                            <button type="submit" className="btn btn-theme">
-                                <div className="btn-box-left"></div>
-                                Post Comments
-                                <div className="btn-box-right"></div>
-                            </button>                
-                        </form>
-                    </>
-                )
+                submitted ?(
+                <div className="alert alert-success text-center" role="alert">
+                    <h3>Thank you for your comments</h3>
+                    <p>We will contact you as soon as possible.</p>
+                </div> ) : (<></>)
             }
+            
+            {
+                failedSubmit ?(
+                <div className="alert alert-danger text-center" role="alert">
+                    <h3>Something went wrong!</h3>
+                    <p>We couldn't submit your comments right now.</p>
+                </div> ) : (<></>)
+            }
+
+            <h2>Come in Contact with Us</h2>
+            <form onSubmit={handleSubmit} noValidate>
+                <div className="grid">
+                    <div className="contactUsName">
+                        <input id="name" className={(errors.name ? 'error': '')} value={name} onChange={handleChange} type="text" placeholder="Your Name" />
+                        <div className="errorMessage">{errors.name}</div>    
+                    </div>
+                    <div className="contactUsEmail">
+                        <input id="email" className={(errors.email ? 'error': '')} value={email} onChange={handleChange} type="email" placeholder="Your Mail" />
+                        <div className="errorMessage">{errors.email}</div>
+                    </div>
+                    <div className="contactUsComments">
+                        <textarea id="comments" className={(errors.comments ? 'error': '')} value={comments} onChange={handleChange} form="contactUsForm" placeholder="Comments"></textarea>
+                        <div className="errorMessage">{errors.comments}</div>
+                    </div>
+                </div>
+                <button type="submit" className="btn-theme">
+                    <div className="btn-box-left"></div>
+                    Post Comments
+                    <div className="btn-box-right"></div>
+                </button>                
+            </form>
         </div>
     </section>
   )
 }
 
-export default ContactFormSection
+export default ContactForm

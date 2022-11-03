@@ -4,15 +4,15 @@ import { NavLink } from 'react-router-dom'
 const ProductCard = ({product}) => {
 
     const addToWishList = (e) => {
-        console.log(`Product with ID ${product.id} added to wish list`)
+        console.log(`Product ${product.name} added to wish list`)
     }
 
     const addToCompare = (e) => {
-        console.log(`Product with ID ${product.id} added to compare`)
+        console.log(`Product ${product.name} added to compare`)
     }
 
     const addToCart = (e) => {
-        console.log(`Product with ID ${product.id} added to shopping cart`)
+        console.log(`Product ${product.name} added to shopping cart`)
     }
 
   return (
@@ -29,7 +29,7 @@ const ProductCard = ({product}) => {
                     <button onClick={addToCompare}><i className="fa-regular fa-code-compare"></i></button>
                     <button onClick={addToCart}><i className="fa-regular fa-bag-shopping"></i></button>
                 </ul>
-                <img src={product.img} alt={product.name} />
+                <img src={product.imageName} alt={product.name} />
             </div>
             <div className="card-body">
                 <h5>{product.category}</h5>

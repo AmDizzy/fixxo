@@ -1,21 +1,47 @@
+import React, {useState, useEffect} from 'react'
 import './assets/css/App.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ContactsView from './views/ContactsView';
 import HomeView from './views/HomeView';
 import NotFoundView from './views/NotFoundView';
 import ProductDetailsView from './views/ProductDetailsView';
+import { ProductContext } from './contexts/contexts'
 
-const App = () => {
+
+
+function App() {
+  const [products, setProducts] = useState({
+    allProducts: [],
+    featuredProducts: []
+  })
+  
+  useEffect(() => {
+    const fetchAllProducts = async () => {
+      let result = await fetch('https://win22-webapi.azurewebsites.net/api/products')
+      setProducts({...products, allProducts: await result.json()})
+    }
+    fetchAllProducts();
+
+    const fetchFeaturedProducts = async () => {
+      let result = await fetch('https://win22-webapi.azurewebsites.net/api/products?take=8')
+      setProducts({...products, featuredProducts: await result.json()})
+    }
+    fetchFeaturedProducts();
+
+  }, [setProducts])
+
   return (
     <>
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<HomeView />} />
-        <Route path='/products' element={<ProductDetailsView />} />
-        <Route path='/products/:name' element={<ProductDetailsView />} />
-        <Route path='/contacts' element={<ContactsView />} />
-        <Route path='*' element={<NotFoundView />} />
-      </Routes>
+      <ProductContext.Provider value={products}>
+        <Routes>
+          <Route path='/' element={<HomeView />} />
+          <Route path='/products' element={<ProductDetailsView />} />
+          <Route path='/products/:name' element={<ProductDetailsView />} />
+          <Route path='/contacts' element={<ContactsView />} />
+          <Route path='*' element={<NotFoundView />} />
+        </Routes>
+      </ProductContext.Provider>
     </BrowserRouter>
     </>
   );

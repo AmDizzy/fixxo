@@ -1,13 +1,14 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
 import FooterSection from '../sections/FooterSection'
 import MainMenuSection from '../sections/MainMenuSection'
+import ProductGridSection from '../sections/ProductGridSection'
+import { ProductContext } from '../contexts/contexts'
 
 const ProductDetailsView = () => {
-  window.top.document.title = 'Products | Fixxo.'
+  const productContext = useContext(ProductContext)
 
-    const params = useParams()
+  window.top.document.title = 'Products | Fixxo.'
 
     return (
         <>
@@ -15,6 +16,7 @@ const ProductDetailsView = () => {
             <MainMenuSection />
           </section>
           <Breadcrumb location="Product Signal" />
+          <ProductGridSection title="Products" items={productContext.allProducts} />
           <FooterSection />
         </>
     )
