@@ -1,0 +1,83 @@
+.new-arrivals {
+    display: flex;
+    height: 35rem;
+
+    .clearance {
+        width: 62%;
+        background-color: $color-silver;
+
+        > div {
+            @include lg {
+                max-width: 430px;
+            }
+        }
+    }
+
+    .arrivals-window {
+        width: 38%;
+        background-color: $color-gray-20;
+
+        > div {
+            @include lg {
+                max-width: 240px;
+            }
+        }
+    }
+
+    .clearance,
+    .arrivals-window {
+        position: relative;
+        display: flex;
+        align-items:flex-end;
+
+        @include lg {
+            padding-left: 3rem;
+            justify-content: space-between;
+        }
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+            justify-content: space-between;
+
+            > h1 {
+                font-weight: $font-weight-bold;
+                font-size: 2rem;
+                
+                @include md {
+                    margin-bottom: 1.5rem;
+                    font-size: 2.82rem;
+                }
+            }
+
+            > p {
+                margin-bottom: 1.5rem;
+            }
+
+            .btn-card {
+                margin-bottom: 3.25rem;
+                margin-left: auto;
+                margin-right: auto;
+                width: calc(100% - 10%);
+
+                @include md {
+                    margin-left: 0;
+                    width: 188px;
+                    margin-bottom: 6.25rem;
+                }
+            }
+        }
+
+        > img {
+            display: none;
+            position: absolute;
+            right: 0;
+            z-index: 1;
+
+            @include lg {
+                display: flex;
+            }
+        }
+    }
+}

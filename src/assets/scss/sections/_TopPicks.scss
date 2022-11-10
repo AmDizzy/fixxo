@@ -1,0 +1,98 @@
+.top-picks {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5%;
+    height: 404px;
+
+    .box-left,
+    .box-right {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        height: 60%;
+
+        @include md {
+            height: 75%;
+        }
+
+        @include lg {
+            height: 100%;
+            align-items: center;
+        }
+
+        > img {
+            display: none;
+            position: absolute;
+            z-index: 1;
+
+            @include lg {
+                display: flex;
+            }
+        }
+        
+        > div {
+            z-index: 2;
+            max-width: 336px;
+            
+            h1 {
+                font-size: 1.5rem;
+                color: $color-white;
+                font-weight: $font-weight-bold;
+
+                @include md {
+                    font-size: 2.3rem;
+                }
+
+                @include lg {
+                    font-size: 2.81rem;
+                }
+            }
+
+            .btn-card {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                width: 100%;
+
+                @include md {
+                    margin-left: 0;
+                    width: 188px;
+                    margin-bottom: 6.25rem;
+                }
+            }
+        }
+    }
+
+    .box-left {
+        background-color: $color-brown;
+        justify-content: flex-end;
+
+        > img {
+            left: 0;
+        }
+
+        > div {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+
+    .box-right {
+        background-color: $color-gray-45;
+        justify-content: flex-start;
+
+        > img {
+            right: 0;
+        }
+
+        > div {
+            margin-left: 1rem;
+            margin-right: 1rem;
+
+            > h1 {
+                color: $color-dark;
+            }
+        }
+    }
+}

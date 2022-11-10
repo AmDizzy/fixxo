@@ -3,6 +3,10 @@ import FooterSection from '../sections/FooterSection'
 import MainMenuSection from '../sections/MainMenuSection'
 import ProductGridSection from '../sections/ProductGridSection'
 import { ProductContext } from '../contexts/contexts'
+import ShowcaseSection from '../sections/ShowcaseSection'
+import NewArrivalsSection from '../sections/NewArrivalsSection'
+import TopPicksSection from '../sections/TopPicksSection'
+import OurSpecialitySection from '../sections/OurSpecialitySection'
 
 
 const HomeView = () => {
@@ -14,7 +18,11 @@ const HomeView = () => {
       <section className='header'>
         <MainMenuSection />
       </section>
+      <ShowcaseSection />
+      <NewArrivalsSection />
       <ProductGridSection title="Featured Products" items={productContext.featuredProducts} />
+      <TopPicksSection />
+      <OurSpecialitySection />
       <FooterSection />
     </>
   )

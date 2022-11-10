@@ -34,7 +34,7 @@ const ProductCard = ({product}) => {
             <div className="card-body">
                 <h5>{product.category}</h5>
                 <h3>{product.name}</h3>
-                <div className="product-rating">
+                <div id='productRating' className="product-rating">
                     <i className="fa-sharp fa-solid fa-star"></i>
                     <i className="fa-sharp fa-solid fa-star"></i>
                     <i className="fa-sharp fa-solid fa-star"></i>
@@ -42,9 +42,7 @@ const ProductCard = ({product}) => {
                     <i className="fa-sharp fa-solid fa-star"></i>
                 </div>
                 <div className="card-price">
-                    <span className="card-static-price d-none">$29.00</span>
-                    <span className="card-old-price">$400.00</span>
-                    <span className="card-discount-price">{product.price}</span>
+                    <span className="card-discount-price">$ {product.price}</span>
                 </div>
             </div>
         </div>

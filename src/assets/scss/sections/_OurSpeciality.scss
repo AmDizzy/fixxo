@@ -1,12 +1,8 @@
 .our-speciality {
     margin-top: 4rem;
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        background-color: $color-gray-8;
-        height: 406px;
-        padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    height: 406px;
 
         > h1 {
             text-align: center;
@@ -49,7 +45,6 @@
                             text-decoration: underline;
                         }
                     }
-    
                 }
                 
                 .box-right {
@@ -62,7 +57,4 @@
     
             }
         }
-        
-
-    }
 }

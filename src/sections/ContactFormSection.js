@@ -10,7 +10,8 @@ const ContactForm = () => {
     const [failedSubmit, setFailedSubmit] = useState(false)
 
     const handleChange = (e) => {
-        const {id, value} = e.target       
+        const {id, value} = e.target
+        
         switch(id) {
             case 'name':
                 setName(value)

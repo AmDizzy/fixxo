@@ -147,23 +147,11 @@
                     position: relative;
                     margin-top: 0.3rem;
 
-                    .card-old-price {
-                        position: relative;
-                        left: -110%;
-                        text-decoration: line-through;
-                        font-size: 1rem;
-                        margin-right: 0;
-                        margin-bottom: 0;
-                        transition: left 0.3s ease-in-out;
-                    }
-
                     .card-discount-price {
-                        left: -36px;
                         position: relative;
                         font-weight: $font-weight-semibold;
                         font-size: 1rem;
                         margin-bottom: 0;
-                        margin-left: 1rem;
                         transition: left 0.3s ease-in-out;
 
                         @include md {
@@ -211,7 +199,7 @@
                         }
 
                         .card-discount-price {
-                            left: 0;
+
                         }
                     }
                 }
