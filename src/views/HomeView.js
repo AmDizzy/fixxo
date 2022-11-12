@@ -8,6 +8,7 @@ import TopPicksSection from '../sections/TopPicksSection'
 import OurSpecialitySection from '../sections/OurSpecialitySection'
 import SpecialDealSection from '../sections/SpecialDealSection'
 import { useProductContext } from '../contexts/ProductContext'
+import SaleBanner from '../sections/SaleBanner'
 
 
 const HomeView = () => {
@@ -34,6 +35,7 @@ const HomeView = () => {
       <TopPicksSection />
       <OurSpecialitySection />
       <SpecialDealSection items={specialDeal} />
+      <SaleBanner />
       <FooterSection />
     </>
   )
