@@ -4,6 +4,7 @@ const OurSpecialitySection = () => {
   return (
     <div>
         <section className="our-speciality container">
+            <div>
                 <h1>Our Speciality</h1>
                 <div>
                     <div className="box-track-order">
@@ -28,6 +29,7 @@ const OurSpecialitySection = () => {
                         <div className="box-right"></div>
                     </div>
                 </div>
+            </div>
         </section>
     </div>
   )
