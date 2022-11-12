@@ -17,12 +17,12 @@ const SpecialDealSection = ({items = []}) => {
                 </div>
                 <div className="row">
                     {
-                        items.map(product => <ProductCard key={product.articleNumber} product={product} />)
+                    items.map(product => <ProductCard key={product.articleNumber} product={product} />)
                     }
                 </div>
             </div>
             
-            <div className="special-deal-2">
+            {/* <div className="special-deal-2">
                 <div className="flash-sale">
                     <h1>2 FOR USD $49</h1>
                     <NavLink className="btn-card btn-white">
@@ -36,7 +36,7 @@ const SpecialDealSection = ({items = []}) => {
                         items.map(product => <ProductCard key={product.articleNumber} product={product} />)
                     }
                 </div>
-            </div>
+            </div> */}
         </section>
     </div>
   )

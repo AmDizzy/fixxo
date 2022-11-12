@@ -24,7 +24,6 @@
     }
 
     @include xl {
-        width: 1110px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
@@ -196,10 +195,6 @@
 
                         .card-old-price {
                             left: 0;
-                        }
-
-                        .card-discount-price {
-
                         }
                     }
                 }

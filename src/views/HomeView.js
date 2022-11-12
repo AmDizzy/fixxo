@@ -24,7 +24,7 @@ const HomeView = () => {
       <ProductGridSection title="Featured Products" items={productContext.featuredProducts} />
       <TopPicksSection />
       <OurSpecialitySection />
-      <SpecialDealSection />
+      <SpecialDealSection items={productContext.featuredProducts} />
       <FooterSection />
     </>
   )
