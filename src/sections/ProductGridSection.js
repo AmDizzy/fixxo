@@ -7,7 +7,7 @@ const ProductGridSection = ({title, items = []}) => {
         <h1>{title}</h1>
           <div className="row">
             {
-              items.map(product => <ProductCard key={product.articleNumber} product={product} />)
+              Array.from(items).map(product => <ProductCard key={product.articleNumber} product={product} />)
             }
           </div>
       </section>

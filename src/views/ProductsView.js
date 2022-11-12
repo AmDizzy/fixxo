@@ -1,15 +1,19 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
 import FooterSection from '../sections/FooterSection'
 import MainMenuSection from '../sections/MainMenuSection'
 import ProductGridSection from '../sections/ProductGridSection'
-import { ProductContext } from '../contexts/contexts'
 import SelectionSaleSection from '../sections/SelectionSaleSection'
+import { useProductContext } from '../contexts/ProductContext'
+
 
 const ProductDetailsView = () => {
-  const productContext = useContext(ProductContext)
-
   window.top.document.title = 'Products | Fixxo.'
+  const {products, getProducts} = useProductContext()
+
+  useEffect(() => {
+    getProducts()
+  }, [])
 
     return (
         <>
@@ -18,7 +22,7 @@ const ProductDetailsView = () => {
           </section>
           <SelectionSaleSection />
           <Breadcrumb location="Product Signal" />
-          <ProductGridSection title="Products" items={productContext.allProducts} />
+          <ProductGridSection title="Products" items={products} />
           <FooterSection />
         </>
     )

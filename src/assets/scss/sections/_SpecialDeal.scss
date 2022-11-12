@@ -1,13 +1,16 @@
 .special-deal {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     margin-top: 4rem;
+    gap: 2rem;
     
     > div {
         display: grid;
-        justify-content: space-between;
-        grid-template-columns: 1fr 1fr;
         gap: 2rem;
+        justify-items: center;
+
+        @include xxl {
+            grid-template-columns: 1fr 1fr;
+        }
 
         .flash-sale {
             display: flex;
@@ -15,9 +18,39 @@
             justify-content: center;
             flex-direction: column;
             background-color: $color-gray-50;
-            margin: 0;
+            padding-top: 2rem;
             color: $color-white;
-            aspect-ratio: 1 / 1;
+            width: 100%;
+
+            .btn-card {
+                margin-bottom: 2rem;
+            }
+        }
+
+        .row {
+            @include xl {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+    }
+
+    .special-deal-2 {
+        .row {
+            grid-area: 2;
+        }
+
+        .flash-sale {
+            grid-area: 1;
+        }
+
+        @include xxl {
+            .row {
+                grid-area: initial;
+            }
+    
+            .flash-sale {
+                grid-area: initial;
+            }
         }
     }
 }

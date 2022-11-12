@@ -1,18 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
 import FooterSection from '../sections/FooterSection'
 import MainMenuSection from '../sections/MainMenuSection'
 import ProductGridSection from '../sections/ProductGridSection'
-import { ProductContext } from '../contexts/contexts'
 import ShowcaseSection from '../sections/ShowcaseSection'
 import NewArrivalsSection from '../sections/NewArrivalsSection'
 import TopPicksSection from '../sections/TopPicksSection'
 import OurSpecialitySection from '../sections/OurSpecialitySection'
 import SpecialDealSection from '../sections/SpecialDealSection'
+import { useProductContext } from '../contexts/ProductContext'
 
 
 const HomeView = () => {
-  const productContext = useContext(ProductContext)
   window.top.document.title = 'Fixxo.'
+  const {featuredProducts, getFeaturedProducts} = useProductContext()
+  const {specialDeal, getSpecialDeal} = useProductContext()
+
+  useEffect(() => {
+    getFeaturedProducts(8)
+  }, [])
+
+  useEffect(() => {
+    getSpecialDeal(6)
+  }, [])
 
   return (
     <>
@@ -21,10 +30,10 @@ const HomeView = () => {
       </section>
       <ShowcaseSection />
       <NewArrivalsSection />
-      <ProductGridSection title="Featured Products" items={productContext.featuredProducts} />
+      <ProductGridSection title="Featured Products" items={featuredProducts} />
       <TopPicksSection />
       <OurSpecialitySection />
-      <SpecialDealSection items={productContext.featuredProducts} />
+      <SpecialDealSection items={specialDeal} />
       <FooterSection />
     </>
   )

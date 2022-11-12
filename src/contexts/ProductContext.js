@@ -12,6 +12,7 @@ export const ProductProvider = ({children}) => {
     const [product, setProduct] = useState ({})
     const [products, setProducts] = useState ({})
     const [featuredProducts, setFeaturedProducts] = useState({})
+    const [specialDeal, setSpecialDeal] = useState({})
 
     const getProducts = async () => {
         const res = await fetch(url)
@@ -23,12 +24,17 @@ export const ProductProvider = ({children}) => {
         setFeaturedProducts(await res.json())
     }
 
+    const getSpecialDeal = async (take = 0) => {
+        const res = await fetch (url + `?take=${take}`)
+        setSpecialDeal(await res.json())
+    }
+
     const getProduct = async (articleNumber) => {
         const res = await fetch(url + `/${articleNumber}`)
         setProduct(await res.json())
     }
 
-    return <ProductContext.Provider value={{product, products, featuredProducts, getProducts, getFeaturedProducts, getProduct}}>
+    return <ProductContext.Provider value={{product, products, featuredProducts, specialDeal, getProduct, getProducts, getFeaturedProducts, getSpecialDeal}}>
         {children}
     </ProductContext.Provider>
 }
