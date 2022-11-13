@@ -1,0 +1,87 @@
+.shopping-cart {
+    width: 100% !important;
+
+    .shoppingcart-item {
+        margin: 30px 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+
+        .item-image {
+            height: 65px;
+            width: 65px;
+            margin-right: 20px;
+            background-color: $color-gray-40;
+
+            > img {
+                height: 65px;
+                width: 65px;
+            }
+        }
+
+        .item-info {
+            flex: 3;
+
+            .item-info-name {
+                font-weight: $font-weight-medium;
+                margin-bottom: 0.5rem;
+                font-size: 1.1rem;
+            }
+
+            .item-info-quantity {
+
+                > button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: $font-weight-medium;
+                    font-size: 1rem;
+                    width: 2rem;
+                    border: 1px solid rgb(163, 163, 163);
+                    background-color: $color-gray-20;
+                    transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+                    
+                    &:hover {
+                        background-color: $color-gray-58;
+                        border: 1px solid rgb(112, 112, 112);
+                    }
+                }
+
+                .quantity {
+                    background-color: $color-white;
+                    padding: 0 1.3rem;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .item-price {
+            flex: 1;
+            display: grid;
+            justify-items: flex-end;
+            font-weight: $font-weight-medium;
+
+            > div {
+                margin-bottom: 0.5rem;
+                font-size: 1.1rem;
+            }
+
+            > button {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1.2rem;
+                background-color: transparent;
+                border: none;
+                transition: color 0.3s ease-in-out;
+
+                &:hover {
+                    color: $color-theme;
+                }
+            }
+        }
+    }
+
+    @include md {
+        width: 500px !important;
+    }
+}

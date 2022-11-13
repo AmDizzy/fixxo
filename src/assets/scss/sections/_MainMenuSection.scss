@@ -66,6 +66,10 @@
         display: flex;
         justify-content: flex-end;
 
+        > button {
+            border: none;
+        }
+
         .menu-icon {
             display: flex;
             position: relative;
