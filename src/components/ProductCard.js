@@ -42,7 +42,7 @@ const ProductCard = ({product}) => {
                     <i className="fa-sharp fa-solid fa-star"></i>
                 </div>
                 <div className="card-price">
-                    <span className="card-discount-price">${product.price}</span>
+                    <span className="card-discount-price">${product.price}.00</span>
                 </div>
             </div>
         </div>
