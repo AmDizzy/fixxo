@@ -24,7 +24,7 @@ const ProductDetailsView = () => {
           </section>
           <SelectionSaleSection />
           <Breadcrumb location="Product Signal" />
-          <ProductDetailsSection item={product} />
+          <ProductDetailsSection product={product} />
           <FooterSection />
         </>
     )

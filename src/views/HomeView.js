@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import FooterSection from '../sections/FooterSection'
 import MainMenuSection from '../sections/MainMenuSection'
-import ProductGridSection from '../sections/ProductGridSection'
+import FeaturedProductsSection from '../sections/ProductGridSection'
 import ShowcaseSection from '../sections/ShowcaseSection'
 import NewArrivalsSection from '../sections/NewArrivalsSection'
 import TopPicksSection from '../sections/TopPicksSection'
@@ -39,7 +39,7 @@ const HomeView = () => {
       </section>
       <ShowcaseSection />
       <NewArrivalsSection />
-      <ProductGridSection title="Featured Products" items={featuredProducts} />
+      <FeaturedProductsSection title="Featured Products" items={featuredProducts} />
       <TopPicksSection />
       <OurSpecialitySection />
       <SpecialDealSection items={specialDeal} />
