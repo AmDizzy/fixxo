@@ -11,12 +11,14 @@ import { useProductContext } from '../contexts/ProductContext'
 import SaleBanner from '../sections/SaleBanner'
 import LineHrSection from '../sections/LineHrSection'
 import FooterLinksSection from '../sections/FooterLinksSection'
+import ProductLists from '../sections/ProductLists'
 
 
 const HomeView = () => {
   window.top.document.title = 'Fixxo.'
   const {featuredProducts, getFeaturedProducts} = useProductContext()
   const {specialDeal, getSpecialDeal} = useProductContext()
+  const {productLists, getProductLists} = useProductContext()
 
   useEffect(() => {
     getFeaturedProducts(8)
@@ -24,6 +26,10 @@ const HomeView = () => {
 
   useEffect(() => {
     getSpecialDeal(6)
+  }, [])
+
+  useEffect(() => {
+    getProductLists(3)
   }, [])
 
   return (
@@ -38,6 +44,7 @@ const HomeView = () => {
       <OurSpecialitySection />
       <SpecialDealSection items={specialDeal} />
       <SaleBanner />
+      <ProductLists items={productLists} />
       <LineHrSection />
       <FooterLinksSection />
       <FooterSection />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const ProductCard = ({product}) => {
+const ProductListCard = ({product}) => {
 
     const addToWishList = (e) => {
         console.log(`Product ${product.name} added to wish list`)
@@ -14,11 +14,11 @@ const ProductCard = ({product}) => {
     const addToCart = (e) => {
         console.log(`Product ${product.name} added to shopping cart`)
     }
-
+    
   return (
-    <div className="col">
-        <div className="card">
-            <div className="card-top">
+    <div className="__col">
+        <div className="__card">
+            <div className="__card-top">
                 <NavLink to={`/products/${product.articleNumber}`} className="btn-card btn-theme">
                     <div className="btn-box-left"></div>
                     QUICK VIEW
@@ -31,7 +31,7 @@ const ProductCard = ({product}) => {
                 </ul>
                 <img src={product.imageName} alt={product.name} />
             </div>
-            <div className="card-body">
+            <div className="__card-body">
                 <h5>{product.category}</h5>
                 <h3>{product.name}</h3>
                 <div id='productRating' className="product-rating">
@@ -50,4 +50,4 @@ const ProductCard = ({product}) => {
   )
 }
 
-export default ProductCard
+export default ProductListCard

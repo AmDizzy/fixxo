@@ -157,12 +157,6 @@
                             font-size: 1.125rem;
                         }
                     }
-
-                    .card-static-price {
-                        font-weight: $font-weight-semibold;
-                        font-size: 1.125rem;
-
-                    }
                 }
             }
         }  
@@ -186,16 +180,6 @@
 
                     .btn-card {
                         top: calc(100% - 50px);
-                    }
-                }
-
-                .card-body {
-
-                    .card-price {
-
-                        .card-old-price {
-                            left: 0;
-                        }
                     }
                 }
             }

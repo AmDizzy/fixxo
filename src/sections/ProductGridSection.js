@@ -5,11 +5,11 @@ const ProductGridSection = ({title, items = []}) => {
   return (
     <section className="featured-products container">
         <h1>{title}</h1>
-          <div className="row">
-            {
-              Array.from(items).map(product => <ProductCard key={product.articleNumber} product={product} />)
-            }
-          </div>
+        <div className="row">
+          {
+            Array.from(items).map(product => <ProductCard key={product.articleNumber} product={product} />)
+          }
+        </div>
       </section>
   )
 }
