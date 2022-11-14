@@ -12,9 +12,14 @@ const ProductDetailsView = () => {
   window.top.document.title = 'Products | Fixxo.'
   const {id} = useParams()
   const {product, getProduct} = useProductContext()
+  const {featuredProducts, getFeaturedProducts} = useProductContext()
 
   useEffect(() => {
     getProduct(id)
+  }, [])
+
+  useEffect(() => {
+    getFeaturedProducts(4)
   }, [])
 
     return (
@@ -24,7 +29,7 @@ const ProductDetailsView = () => {
           </section>
           <SelectionSaleSection />
           <Breadcrumb location="Product Signal" />
-          <ProductDetailsSection product={product} />
+          <ProductDetailsSection product={product} related={featuredProducts} />
           <FooterSection />
         </>
     )
