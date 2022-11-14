@@ -20,14 +20,18 @@ const HomeView = () => {
   const {specialDeal, getSpecialDeal} = useProductContext()
   const {productLists, getProductLists} = useProductContext()
 
+
+  //Gets 8 products and sends them to the product grid section
   useEffect(() => {
     getFeaturedProducts(8)
   }, [])
 
+  //Gets 6 products and sends them to the special deal sections
   useEffect(() => {
     getSpecialDeal(6)
   }, [])
 
+  //Gets 3 products and sends them to the product lists
   useEffect(() => {
     getProductLists(3)
   }, [])

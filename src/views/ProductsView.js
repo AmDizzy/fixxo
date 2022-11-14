@@ -11,6 +11,7 @@ const ProductDetailsView = () => {
   window.top.document.title = 'Products | Fixxo.'
   const {products, getProducts} = useProductContext()
 
+  // Gets all the products from the API and sends them into ProductGridSection
   useEffect(() => {
     getProducts()
   }, [])

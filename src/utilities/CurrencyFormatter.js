@@ -1,3 +1,4 @@
+//Formats the price after US style
 const currencyFormat = new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' })
 
 export const currencyFormatter = (value) => {

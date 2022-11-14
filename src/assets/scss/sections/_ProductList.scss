@@ -142,6 +142,7 @@
     }
 }
 
+//This css is only enabled on devices that can use hover, example computer with mouse that hovers over an element. Doesnt work on ex mobile
 @media (hover: hover) {
     .product-list {
         .__col:hover {
@@ -185,6 +186,7 @@
     }
 }
 
+//This css is only enabled on devices with no hover functionality ex mobile, tablet touch, touch screen etc
 @media (hover: none) {
     .product-list {
         .__col {

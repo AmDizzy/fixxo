@@ -52,22 +52,20 @@ const validateElement = element => {
 
                 break;
 
-
-                case 'textarea':
-                    if (!isNullOrEmpty(element.value)) {
-                        if (!isMinimumLength(element.value, element.dataset.requiredMin)) {
-                            error = `You must enter a comment`
-                            document.getElementById(`${element.id}`).classList.add('text-danger')
-                        } else {
-                            document.getElementById(`${element.id}`).classList.remove('text-danger')
-                        }
-                    } else {
+            case 'textarea':
+                if (!isNullOrEmpty(element.value)) {
+                    if (!isMinimumLength(element.value, element.dataset.requiredMin)) {
                         error = `You must enter a comment`
+                        document.getElementById(`${element.id}`).classList.add('text-danger')
+                    } else {
+                        document.getElementById(`${element.id}`).classList.remove('text-danger')
                     }
-    
-                    break;
-        }
+                } else {
+                    error = `You must enter a comment`
+                }
 
+                break;
+        }
         document.getElementById(`${element.id}-error`).innerText = error
     }
 }

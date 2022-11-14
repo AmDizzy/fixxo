@@ -1,8 +1,8 @@
 .header {
     background: rgb(231,231,231);
     background: $color-gradient-gray-10;
-    
 }
+
 
 .mainmenu {
     overflow: hidden;
@@ -17,7 +17,6 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-areas: "logotype menulinks menuicons";
     }
-    
 
     .logotype {
         grid-area: logotype;
@@ -30,7 +29,6 @@
             color: $color-dark;
         }
     }
-
 
     .menu-links {
         position: relative;
@@ -135,6 +133,7 @@
 }
 
 
+// A transparent header for pages other than home
 .header-transparent {
     background: none;
 }

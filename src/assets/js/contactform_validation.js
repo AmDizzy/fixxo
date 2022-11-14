@@ -46,6 +46,7 @@ const validate_name = (value) => {
         return null
 }
 
+
 const validate_email = (value) => {
     const regex_email= /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
@@ -56,6 +57,7 @@ const validate_email = (value) => {
     else
         return null
 }
+
 
 const validate_comments = (value) => {
     if (!value)

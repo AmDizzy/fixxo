@@ -14,10 +14,12 @@ const ProductDetailsView = () => {
   const {product, getProduct} = useProductContext()
   const {featuredProducts, getFeaturedProducts} = useProductContext()
 
+  //Gets specific product from ID and sends them to the product detail section to see SKU, size, description etc
   useEffect(() => {
     getProduct(id)
   }, [])
 
+  //Gets 4 products and sends them to the product detail section to display in related products
   useEffect(() => {
     getFeaturedProducts(4)
   }, [])
